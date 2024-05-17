@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Redirect Service</title>
+    <title>Dynamic Redirect</title>
 </head>
 <body>
-    <h1>Redirecting...</h1>
     <script>
-        // 解析URL参数
+        // 读取URL参数中的`target`值
         const params = new URLSearchParams(window.location.search);
         const target = params.get('target');
         if (target) {
-            // 传递参数给香港服务器
-            window.location.href = 'http://http://198.176.63.132:8080/redirect?target=' + encodeURIComponent(target);
+            window.location.href = decodeURIComponent(target); // 实现跳转
         } else {
-            document.body.innerHTML = '<p>Invalid or missing target parameter.</p>';
+            document.body.innerHTML = '<p>Invalid or no target provided for redirection.</p>';
         }
     </script>
 </body>
