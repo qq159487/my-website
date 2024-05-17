@@ -7,12 +7,12 @@
 <body>
     <h1>Welcome to the Redirect Service</h1>
     <input type="text" id="urlField" placeholder="Enter URL here">
-    <button onclick="redirectToServer()">Redirect</customer_service></button>
+    <button onclick="redirectToServer()">Redirect</button>
 
     <script>
         function redirectToServer() {
             var url = document.getElementById('urlField').value;
-            // 注意更新了端口号和可能的路径
+            // 更新此处为香港服务器的地址和端口
             window.location.href = 'http://198.176.63.132:8080/redirect?target=' + encodeURIComponent(url);
         }
     </script>
