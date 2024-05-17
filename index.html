@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dynamic Redirect</title>
+    <title>Redirect Service</title>
 </head>
 <body>
+    <h1>Welcome to the Redirect Service</h1>
+    <input type="text" id="urlField" placeholder="Enter URL here">
+    <button onclick="redirectToServer()">Redirect</button>
+
     <script>
-        // 读取URL参数中的`target`值
-        const params = new URLSearchParams(window.location.search);
-        const target = params.get('target');
-        if (target) {
-            window.location.href = decodeURIComponent(target); // 实现跳转
-        } else {
-            document.body.innerHTML = '<p>Invalid or no target provided for redirection.</p>';
+        function redirectToServer() {
+            var url = document.getElementById('urlField').value;
+            window.location.href = 'http://198.176.63.132/redirect.php?target=' + encodeURIComponent(url);
         }
     </script>
 </body>
