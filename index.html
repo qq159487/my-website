@@ -5,15 +5,16 @@
     <title>Redirect Service</title>
 </head>
 <body>
-    <h1>Welcome to the Redirect Service</h1>
-    <input type="text" id="urlField" placeholder="Enter URL here">
-    <button onclick="redirectToServer()">Redirect</button>
-
+    <h1>Redirecting...</h1>
     <script>
-        function redirectToServer() {
-            var url = document.getElementById('urlField').value;
-            // 更新此处为香港服务器的地址和端口
-            window.location.href = 'http://198.176.63.132:8080/redirect?target=' + encodeURIComponent(url);
+        // 解析URL参数
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('target');
+        if (target) {
+            // 传递参数给香港服务器
+            window.location.href = 'http://198.176.63.132:8080/redirect?target=' + encodeURIComponent(target);
+        } else {
+            document.body.innerHTML = '<p>Invalid or missing target parameter.</p>';
         }
     </script>
 </body>
