@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script type="text/javascript">
-        window.location.href = "https://baidu.com";
-    </script>
+    <title>Dynamic Redirect</title>
 </head>
 <body>
-    <p>  <a href="https://baidu.com">link to baidu.com</a>.</p>
+    <script>
+        // 读取URL参数中的`target`值
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('target');
+        if (target) {
+            window.location.href = decodeURIComponent(target); // 实现跳转
+        } else {
+            document.body.innerHTML = '<p>Invalid or no target provided for redirection.</p>';
+        }
+    </script>
 </body>
 </html>
